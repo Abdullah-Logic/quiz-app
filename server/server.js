@@ -12,7 +12,7 @@ const app = express()
 /* App Middlewares */
 
 app.use(morgan('tiny'));
-app.use(cors());
+app.use(cors({ origin: '*' }));
 app.use(express.json());
 config();
 
