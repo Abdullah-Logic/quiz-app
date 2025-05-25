@@ -30,10 +30,8 @@ export function CheckUserExist({ children }) {
 export async function getServerData(url) {
   try {
     const response = await fetch(url);
-    console.log("Raw Response:", response); // Check if response object exists
 
     const data = await response.json();
-    console.log("Parsed Data:", data); // Check if data is coming after parsing JSON
 
     return data;
   } catch (error) {

@@ -1,16 +1,19 @@
 import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { setUserId } from "../redux/ResultReducer";
 import "../styles/Main.css";
 
 export default function Main() {
   const inputRef = useRef(null);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   function startQuiz() {
     if (inputRef.current?.value) {
       dispatch(setUserId(inputRef.current?.value));
+      navigate("/quiz");
     }
   }
 
@@ -34,11 +37,17 @@ export default function Main() {
           className="userid"
           type="text"
           placeholder="Username*"
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              startQuiz();
+            }
+          }}
         />
       </form>
 
       <div className="start">
-        <Link className="btn" to={"quiz"} onClick={startQuiz}>
+        <Link className="btn" onClick={startQuiz}>
           Start Quiz
         </Link>
       </div>

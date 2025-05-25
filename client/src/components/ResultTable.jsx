@@ -3,15 +3,22 @@ import { getServerData } from "../helper/Help";
 export default function ResultTable() {
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    getServerData(
-      `${process.env.REACT_APP_SERVER_HOSTNAME}/api/result`,
-      (res) => {
-        setData(res);
+const fetchData = async () => {
+      try {
+        const result = await getServerData(
+          `${process.env.REACT_APP_SERVER_HOSTNAME}/api/result`
+        );
+        setData(result);
+     
+      } catch (error) {
+        console.error("Error fetching data:", error);
       }
-    );
-  });
-
+    };
+  
+  useEffect(() => {
+      fetchData();
+  }, []);
+   console.log("data;", data)
   return (
     <div>
       <table>
@@ -28,9 +35,9 @@ export default function ResultTable() {
           {data.map((v, i) => (
             <tr className="table-body" key={i}>
               <td>{v?.username || ""}</td>
-              <td>{v?.attempts || 0}</td>
-              <td>{v?.points || 0}</td>
-              <td>{v?.achived || ""}</td>
+              <td>{v?.attempts !== undefined ? v?.attempts : 0}</td>
+              <td>{v?.points !== undefined ? v?.points : 0}</td>
+              <td>{v?.achieved || ""}</td>
             </tr>
           ))}
         </tbody>

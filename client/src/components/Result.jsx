@@ -21,14 +21,13 @@ export default function Result() {
   const attempts = attempts_Number(result);
   const earnPoints = earnPoints_Number(result, answers, 10);
   const flag = flagResult(totalPoints, earnPoints);
-
   /** store user result */
   usePublishResult({
     result,
     username: userId,
     attempts,
     points: earnPoints,
-    achived: flag ? "Passed" : "Failed",
+    achieved: flag ? "Passed" : "Failed",
   });
 
   function onRestart() {

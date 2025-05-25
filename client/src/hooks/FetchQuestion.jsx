@@ -20,17 +20,15 @@ export const useFetchQuestion = () => {
     /** async function fetch backend data */
     (async () => {
       try {
-
-        const result = await getServerData(
+        const q = await getServerData(
           `${process.env.REACT_APP_SERVER_HOSTNAME}/api/questions`
         );
 
-        if (!result || result.length === 0) {
+        if (!q || q.length === 0) {
           throw new Error("No data received from the server.");
         }
 
-        const [{ questions, answers }] = result;
-        console.log(questions, answers);
+        const [{ questions, answers }] = q;
 
         if (questions.length > 0) {
           setGetData((prev) => ({ ...prev, isLoading: false }));
@@ -53,17 +51,17 @@ export const useFetchQuestion = () => {
 /** MoveAction Dispatch function */
 export const MoveNextQuestion = () => async (dispatch) => {
   try {
-    dispatch(Action.moveNextAction()); 
+    dispatch(Action.moveNextAction());
   } catch (error) {
-    console.log("Error moving to next question:", error);
+    console.error("Error moving to next question:", error);
   }
 };
 
 /** PrevAction Dispatch function */
 export const MovePrevQuestion = () => async (dispatch) => {
   try {
-    dispatch(Action.movePrevAction()); 
+    dispatch(Action.movePrevAction());
   } catch (error) {
-    console.log("Error moving to previous question:", error);
+    console.error("Error moving to previous question:", error);
   }
 };

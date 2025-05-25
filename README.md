@@ -1,8 +1,8 @@
-# Portfolio Website
+# Quiz Application
 
 ## Overview
 
-Welcome to the **Dynamic Quiz Application!** This React and Redux-powered quiz app offers **real-time state management** and **dynamic data rendering**, ensuring a smooth and interactive user experience. It fetches questions from a local database, tracks user attempts, and calculates **earned points and results** dynamically. **Redux Toolkit** efficiently manages state, while React Router handles seamless navigation. Users can **start, attempt, and restart quizzes**, with results displayed in a structured table. The project follows **clean and modular code practices**, making it **scalable and easy to maintain**. Enjoy the quiz!
+Welcome to the **Quiz Application!** This React and Redux-powered quiz app offers **real-time state management** and **dynamic data rendering**, ensuring a smooth and interactive user experience. It fetches questions from a local database, tracks user attempts, and calculates **earned points and results** dynamically. **Redux Toolkit** efficiently manages state, while React Router handles seamless navigation. Users can **start, attempt, and restart quizzes**, with results displayed in a structured table. The project follows **clean and modular code practices**, making it **scalable and easy to maintain**. Enjoy the quiz!
 
 ## Getting Started
 
@@ -17,7 +17,7 @@ git clone https://github.com/Abdullah-Logic/quiz-app.git
 **Step 2:** Navigate into the project folder:
 
 ```bash
-cd react-portfoilo
+cd quiz-app
 ```
 
 **Step 3:** Install the dependencies:
@@ -36,33 +36,29 @@ npm start
 
 **Core Technologies:**
 
-- ReactJS
-
-**Key Functionalities:**
-
-- Dynamic Data Rendering
-- Responsive Design
-- Component-based-structure
-
-**Major Dependencies:**
-
-react-redux
-react-router-dom
-axios
+- React.js
+- Node.js
+- Express.js
+- Redux
+- MongoDb
+- Axios
 
 ## Structure
 
 ```bash
- /public
+/client
+  /public
     /index.html
- /src
+  /src
     /components
-        /app
-            App.jsx
-    /database
-        Data.js
+        App.jsx
+        Main.jsx
+        Questions.jsx
+        Quiz.jsx
+        Result.jsx
+        ResultTable.jsx
     /helper
-        Helper.js
+        Help.jsx
     /hooks
         fetchQuestion.jsx
         setResult.jsx
@@ -76,8 +72,28 @@ axios
         Main.css
         Result.css
     index.js
- .gitignore
- .env.example
- pakage.json
- README.md
+  .gitignore
+  .env
+  package.json
+/server
+  /controllers
+    controller.js
+  /database
+    conn.js
+    data.js
+  /models
+    questionSchema.js
+    resultSchema.js
+  /router
+    route.js
+  .env
+  .gitignore
+  package.json
+  server.js
+.env
+.gitignore
+README.md
+
+
+
 ```

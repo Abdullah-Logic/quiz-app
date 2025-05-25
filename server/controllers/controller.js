@@ -5,9 +5,7 @@ import questions, { answers } from '../database/data.js';
 /** get all questions */
 export async function getQuestions(req, res) {
     try {
-        console.log("Fetching questions from MongoDB...");
         const q = await Questions.find();
-        console.log("MongoDB Data:", q);
 
         res.json(q);
     } catch (error) {
@@ -49,13 +47,12 @@ export async function getResult(req, res) {
 /** post all result */
 export async function postResult(req, res) {
     try {
-        const { username, result, attempts, points, achived } = req.body;
+        const { username, result, attempts, points, achieved } = req.body;
 
         if (!username || result === undefined) {
             throw new Error('Data Not Provided...!');
         }
-
-        await Results.create({ username, result, attempts, points, achived });
+        await Results.create({ username, result, attempts, points, achieved });
 
         res.json({ msg: 'Result Saved Successfully...!' });
     } catch (error) {
